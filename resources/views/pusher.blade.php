@@ -28,6 +28,7 @@
         padding: 10px;
         border: 1px solid black;
         border-radius: 3px;
+        background-color: lightgreen;
       }
     </style>
 </head>
@@ -35,6 +36,7 @@
     <div class="container">
       <div class="content">
         <h1>Laravel & Pusher: Demo real-time web application.</h1>
+        <a href="/event">Đặt hàng</a>
           <small>
             Author: <a href="https://trungquandev.com/" target="__blank">https://trungquandev.com/</a>
           </small><br><br>
@@ -44,8 +46,9 @@
       </div>
     </div>
     <div class="tb">
-      CÓ THÔNG BÁO MỚI
+      đặt hàng thành công
     </div>
+    <button id="play" style="display: none;">play</button>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
@@ -62,19 +65,24 @@
 
         //Bind một function addMesagePusher với sự kiện DemoPusherEvent
         channel.bind('App\\Events\\PusherEvent', addMessageDemo);
+
+        $("#play").click(function(){
+          const audio = new Audio("mp3/sound_notification.mp3" );
+          audio.play();
+        });
+        //function add message
+        function addMessageDemo(data) {
+          // var liTag = $("<li class='list-group-item'></li>");
+          // liTag.html(data.msg);
+          // $('#messages').append(liTag);
+          $("#play").click();
+          $(".tb").show();
+          setTimeout(() => {
+            $(".tb").hide();
+          }, 1500);
+        }
       });
 
-      //function add message
-      function addMessageDemo(data) {
-        // var liTag = $("<li class='list-group-item'></li>");
-        // liTag.html(data.msg);
-        // $('#messages').append(liTag);
-        $(".tb").show();
-        setTimeout(() => {
-          $(".tb").hide();
-          $("#messages").append('<h1>hahaah</h1>');
-        }, 3000);
-      }
     </script>
 </body>
 </html>

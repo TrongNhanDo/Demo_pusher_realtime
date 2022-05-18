@@ -11,7 +11,7 @@ class PusherController extends Controller
         return view('pusher');
     }
     public function event(){
-        event(new PusherEvent('lolo con cac'));
-        return "Msg has been sent";
+        event(new PusherEvent('Có đơn hàng mới'));
+        return "Đã đặt hàng";
     }
 }

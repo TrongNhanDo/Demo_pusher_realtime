@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/get-pusher',[PusherController::class,'getPusher']);
+Route::get('/',[PusherController::class,'getPusher']);
 Route::get('/event',[PusherController::class,'event']);
